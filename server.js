@@ -9,6 +9,8 @@ app.get('/', function(req, res) {
   var command = spawn(__dirname + '/scripts/main.sh', [ req.query.move || '' ]);
   var output  = [];
 
+  console.log(req.query.move);
+
   command.stdout.on('data', function(chunk) {
     output.push(chunk);
   });
@@ -21,6 +23,6 @@ app.get('/', function(req, res) {
   });
 });
 
-const PORT = 3000;
+const PORT = 3001;
 app.listen(PORT);
 console.log(`listening http://localhost:${PORT}`);
