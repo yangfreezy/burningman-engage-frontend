@@ -3,7 +3,7 @@
 `npm run start` to run the frontend
 `npm run server` to run the server
 
-Hitting localhost:3000/?argument=move will run `scripts/main.sh move`
+Hitting localhost:3001/?argument=move will run `scripts/main.sh move`
 
 
 ---------------------
