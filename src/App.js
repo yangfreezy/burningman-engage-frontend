@@ -1,11 +1,38 @@
 import React, { Component } from "react";
-import "./App.css";
+import styled from "styled-components";
+import myImage from "./engage.jpg";
+
+const AppHolder = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  margin: 0px;
+  padding: 0px;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+  padding: 0px;
+  color: white;
+`;
+
+const Logo = styled.img`
+  width: 300px;
+  height: 300px;
+`;
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <iframe
+      <AppHolder>
+        <Container>
+          <Logo src={myImage} />
+          <iframe
           src="http://player.twitch.tv/?channel=nesfandiari"
           height={500}
           width={800}
@@ -13,7 +40,8 @@ class App extends Component {
           scrolling={true}
           allowfullscreen={true}
         />
-      </div>
+        </Container>
+      </AppHolder>
     );
   }
 }
