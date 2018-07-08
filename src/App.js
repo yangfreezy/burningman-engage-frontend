@@ -72,7 +72,7 @@ class App extends Component {
             }}
           >
             <StreamHolder>
-              <OpentokStream credentials={credentials} />
+              <OpentokStream credentials={credentials} reff={this.otSession} />
             </StreamHolder>
             <div
               style={{
