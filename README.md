@@ -1,3 +1,14 @@
+`npm install`
+
+`npm run start` to run the frontend
+`npm run server` to run the server
+
+Hitting localhost:3000/?argument=move will run `scripts/main.sh move`
+
+
+---------------------
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
