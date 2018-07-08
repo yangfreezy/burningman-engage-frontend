@@ -1,77 +1,106 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { OTSession, OTPublisher, OTStreams, OTSubscriber } from "opentok-react";
 import myImage from "./engage.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronRight,
+  faChevronLeft
+} from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+import "./styles.css";
+
+import OpentokStream from "./opentok";
+import { API_KEY, SESSION_ID, TOKEN } from "./config";
 
 const AppHolder = styled.div`
   display: flex;
-  width: 100%;
-  height: 100%;
   flex-direction: column;
   align-items: center;
   background-color: black;
   margin: 0px;
-  padding: 0px;
+  padding-top: 50px;
 `;
 
 const Container = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
   margin: 0px;
   padding: 0px;
   color: white;
 `;
 
-const Logo = styled.img`
-  width: 300px;
-  height: 300px;
+const StreamHolder = styled.div`
+  padding-top: 50px;
+  padding-bottom: 50px;
+  position: relative;
+  // top: -50px;
 `;
 
-// open tok credentials
-const apiKey = "46149892";
-const sessionId =
-  "1_MX40NTgyODA2Mn5-MTUzMTAxMzY5MzMxNX5Sc2QyMnAycGdGNVB5SzZFamZlQllsTjl-UH4";
-const token =
-  "TT1==cGFydG5lcl9pZD00NTgyODA2MiZzaWc9NjA4ZTVmMTExYTE4NjM2NGQ1MDExMGVhZWJiOTJlMTEzZTAyNmExODpzZXNzaW9uX2lkPTFfTVg0ME5UZ3lPREEyTW41LU1UVXpNVEF4TXpZNU16TXhOWDVTYzJReU1uQXljR2RHTlZCNVN6WkZhbVpsUWxsc1RqbC1VSDQmY3JlYXRlX3RpbWU9MTUzMTAxMzY5NiZub25jZT0wLjA3MDk1MDQyMDgyMjkxMjM2JnJvbGU9cHVibGlzaGVyJmV4cGlyZV90aW1lPTE1MzExMDAwOTY=";
+const Logo = styled.img`
+  width: 150px;
+  height: 150px;
+`;
+
+const ENDPOINT = "http://localhost:3001";
+
+function goLeft() {
+  axios.get(`${ENDPOINT}?move=left`);
+}
+
+function goRight() {
+  axios.get(`${ENDPOINT}?move=right`);
+}
+
+const credentials = {
+  apiKey: API_KEY,
+  sessionId: SESSION_ID,
+  token: TOKEN
+};
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      error: null,
-      connected: false
-    };
-
-    this.sessionEvents = {
-      sessionConnected: () => {
-        this.setState({ connected: true });
-      },
-      sessionDisconnected: () => {
-        this.setState({ connected: false });
-      }
-    };
-  }
-
-  componentWillMount() {
-    OT.registerScreenSharingExtension("chrome", config.CHROME_EXTENSION_ID, 2);
-  }
-
-  onError = err => {
-    this.setState({ error: `Failed to connect: ${err.message}` });
-  };
-
   render() {
     return (
       <AppHolder>
         <Container>
           <Logo src={myImage} />
-          <OTSession apiKey={apiKey} sessionId={sessionId} token={token}>
-            <OTPublisher />
-            <OTStreams>
-              <OTSubscriber />
-            </OTStreams>
-          </OTSession>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "sapce-between"
+            }}
+          >
+            <StreamHolder>
+              <OpentokStream credentials={credentials} />
+            </StreamHolder>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center"
+              }}
+            >
+              <div>
+                <span style={{ paddingLeft: 20, paddingRight: 20 }}>
+                  <span onClick={goLeft} style={{ cursor: "pointer" }}>
+                    <FontAwesomeIcon
+                      icon={faChevronLeft}
+                      size="5x"
+                      color="white"
+                    />
+                  </span>
+                </span>
+                <span onClick={goRight} style={{ cursor: "pointer" }}>
+                  <FontAwesomeIcon
+                    icon={faChevronRight}
+                    size="5x"
+                    color="white"
+                  />
+                </span>
+              </div>
+            </div>
+          </div>
         </Container>
       </AppHolder>
     );
