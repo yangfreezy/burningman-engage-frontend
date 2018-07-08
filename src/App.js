@@ -4,26 +4,32 @@ import myImage from "./engage.jpg";
 
 const AppHolder = styled.div`
   display: flex;
-  width: 100%;
-  height: 100%;
   flex-direction: column;
   align-items: center;
   background-color: black;
   margin: 0px;
-  padding: 0px;
+  padding-top: 50px;
 `;
 
 const Container = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
   margin: 0px;
   padding: 0px;
   color: white;
 `;
 
+const StreamHolder = styled.div`
+  padding-top: 100px;
+  padding-bottom: 100px;
+  position: relative;
+  top: -50px;
+`;
+
 const Logo = styled.img`
-  width: 300px;
-  height: 300px;
+  width: 150px;
+  height: 150px;
 `;
 
 class App extends Component {
@@ -32,14 +38,16 @@ class App extends Component {
       <AppHolder>
         <Container>
           <Logo src={myImage} />
-          <iframe
-          src="http://player.twitch.tv/?channel=nesfandiari"
-          height={500}
-          width={800}
-          frameborder="<frameborder>"
-          scrolling={true}
-          allowfullscreen={true}
-        />
+          <StreamHolder>
+            <iframe
+              src="http://player.twitch.tv/?channel=nesfandiari"
+              height={500}
+              width={800}
+              frameborder="<frameborder>"
+              scrolling={true}
+              allowfullscreen={true}
+            />
+          </StreamHolder>
         </Container>
       </AppHolder>
     );
