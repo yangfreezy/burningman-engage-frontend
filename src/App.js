@@ -58,24 +58,25 @@ class App extends Component {
                  alignItems: 'sapce-between'
                }}
              >
-          <StreamHolder>
-            <iframe
+            <StreamHolder>
+              {false && <iframe width="560" height="315" src="https://www.youtube.com/embed/dGpKT9o0C8M" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>}
+              {false && <iframe
               src="http://player.twitch.tv/?channel=nesfandiari"
               height={500}
               width={650}
               frameborder="<frameborder>"
               scrolling={true}
               allowfullscreen={true}
-            />
+                          />}
           </StreamHolder>
           <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <div>
               <span style={{paddingLeft: 20, paddingRight: 20}}>
-                <span onClick={goLeft}>
+                <span onClick={goLeft} style={{cursor: 'pointer'}}>
                   <FontAwesomeIcon icon={faChevronLeft} size="5x" color="white"/>
                 </span>
               </span>
-              <span onClick={goRight}>
+              <span onClick={goRight} style={{cursor: 'pointer'}}>
                 <FontAwesomeIcon icon={faChevronRight} size="5x" color="white"/>
               </span>
             </div>

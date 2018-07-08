@@ -3,7 +3,12 @@
 `npm run start` to run the frontend
 `npm run server` to run the server
 
-Hitting localhost:3001/?argument=move will run `scripts/main.sh move`
+Go to http://localhost:3000 and click the arrows
+These will call scripts/main.sh with 'left' or 'right' as argument
+
+Hitting http://localhost:3001/?argument=move will run `scripts/main.sh move`
+
+Go live: https://www.youtube.com/live_dashboard_splash?next_url=%2Fwebcam
 
 
 ---------------------
