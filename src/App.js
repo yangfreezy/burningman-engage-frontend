@@ -31,10 +31,10 @@ const Container = styled.div`
 `;
 
 const StreamHolder = styled.div`
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 100px;
+  padding-bottom: 100px;
   position: relative;
-  // top: -50px;
+  top: -50px;
 `;
 
 const Logo = styled.img`
